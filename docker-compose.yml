@@ -55,9 +55,6 @@ services:
       - POSTGRES_DB=stat
     healthcheck:
       test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
-      timeout: 120s
-      interval: 5s
-      retries: 10
 #  ewm-service:
 #    ports:
 #      - "8080:8080"
