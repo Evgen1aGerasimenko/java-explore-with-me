@@ -1,7 +1,7 @@
 version: '3.1'
 services:
 
-  ewm-service:
+  main-service:
     build: main-service
     image: main-service
     container_name: main-service
@@ -31,7 +31,7 @@ services:
       interval: 5s
       retries: 10
 
-  stats-server:
+  ewm-service:
       build: stats/stats-server
       image: stats-server
       container_name: stats-server
