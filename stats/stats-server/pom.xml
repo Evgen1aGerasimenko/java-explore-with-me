@@ -54,13 +54,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>stats-dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
+            <groupId>ru.practicum</groupId>
             <artifactId>stats-server</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
