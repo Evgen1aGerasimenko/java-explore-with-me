@@ -1,7 +1,7 @@
 version: '3.1'
 services:
 
-  main-service:
+  ewm-service:
     build: main-service
     image: main-service
     container_name: main-service
@@ -31,12 +31,12 @@ services:
       interval: 5s
       retries: 10
 
-  ewm-service:
+  stats-server:
       build: stats/stats-server
       image: stats-server
       container_name: stats-server
       ports:
-      - "9090:9090"
+      - "9091:9090"
       depends_on:
       - db
       environment:
