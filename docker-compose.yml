@@ -1,55 +1,23 @@
-
 services:
-
-  ewm-service:
-    build: main-service
-    image: main-service
-    container_name: main-service
-    ports:
-      - "8081:8080"
-    depends_on:
-      - stats-server
-      - sdb
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://sdb:5433/service
-      - SPRING_DATASOURCE_USERNAME=service
-      - SPRING_DATASOURCE_PASSWORD=service
-      - STATS_SERVER_URL=http://stats-server:9090
-
-  sdb:
-    image: postgres:16.1
-    container_name: postgres-service
-    ports:
-      - "7433:5433"
-    environment:
-      - POSTGRES_PASSWORD=service
-      - POSTGRES_USER=service
-      - POSTGRES_DB=service
-    healthcheck:
-      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
-      timeout: 5s
-      interval: 5s
-      retries: 10
-
   stats-server:
-      build: stats/stats-server
-      dockerfile: stats/stats-server
-      image: stats-server
-      container_name: stats-server
-      ports:
-      - "9091:9090"
-      depends_on:
+    build: stat-service/stat-server
+    image: stat-server
+    container_name: stat-server
+    ports:
+      - "9090:9090"
+    depends_on:
       - db
-      environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/stat
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/stat
       - SPRING_DATASOURCE_USERNAME=stat
       - SPRING_DATASOURCE_PASSWORD=stat
+
 
   db:
     image: postgres:16.1
     container_name: postgres
     ports:
-      - "6433:5433"
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=stat
       - POSTGRES_USER=stat
@@ -59,9 +27,3 @@ services:
       timeout: 5s
       interval: 5s
       retries: 10
-#  ewm-service:
-#    ports:
-#      - "8080:8080"
-#
-#  ewm-db:
-#    image: postgres:14-alpine
