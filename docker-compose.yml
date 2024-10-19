@@ -1,10 +1,10 @@
 services:
   stats-server:
-    build: stat-service/stat-server
-    image: stat-server
-    container_name: stat-server
+    build: stats/stats-server
+    image: stats-server
+    container_name: stats-server
     ports:
-      - "9090:9090"
+      - "9091:9090"
     depends_on:
       - db
     environment:
@@ -27,3 +27,5 @@ services:
       timeout: 5s
       interval: 5s
       retries: 10
+
+      ewm-service:
