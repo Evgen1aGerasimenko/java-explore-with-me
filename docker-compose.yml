@@ -33,7 +33,7 @@ services:
 
   stats-server:
       build: stats/stats-server
-      dockerfile: stats/stats-server/Dockerfile
+      dockerfile: stats/stats-server
       image: stats-server
       container_name: stats-server
       ports:
