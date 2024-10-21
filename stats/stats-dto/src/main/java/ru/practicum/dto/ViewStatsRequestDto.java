@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ViewStatsRequestDto {
-    LocalDateTime start;
-    LocalDateTime end;
-    List<String> uris;
-    Boolean unique;
+    private LocalDateTime start;
+    private LocalDateTime end;
+    private List<String> uris;
+    private Boolean unique;
 }
