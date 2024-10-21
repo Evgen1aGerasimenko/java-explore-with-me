@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ViewStatsRequestDto {
+
     private LocalDateTime start;
     private LocalDateTime end;
     private List<String> uris;
